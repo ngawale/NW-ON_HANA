@@ -1,0 +1,12 @@
+# Local .terraform directories
+**/.terraform/*
+*.plan*
+*.lock*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+#Misc
+.DS_Store
+variables.tfvars
