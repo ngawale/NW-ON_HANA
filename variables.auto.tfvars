@@ -39,8 +39,8 @@ ssh_key = "terraform"
 
 # Security
 kms_key_arn           = "arn:aws:kms:us-east-1:486529790556:key/23ba7a36-c486-4846-ba3a-c2f3312e4c83"
-default_instance_role = true
-
+default_instance_role = false
+iam_instance_role = "ASCSClusterRole"
 # SAP parameters
 sid               = "HBX"
 high_availability = false

@@ -15,6 +15,10 @@ if [[ "$DISTRO" == *"SUSE"* ]]; then
     sudo rpm --import RPM-GPG-KEY-AWS
     sudo zypper install -y aws-sap-dataprovider-sles.x86_64.rpm
     sudo systemctl start aws-dataprovider
+    INSTANCE_ID="`curl -s http://169.254.169.254/latest/meta-data/instance-id`"
+    OS_Hostname="`aws ec2 describe-tags --filters Name=resource-id,Values="$INSTANCE_ID" Name=key,Values=Name --region us-east-1 --output=text | cut -f5`"
+    sudo hostnamectl set-hostname $OS_Hostname --static
+    sed -i "/localhost/ c\127.0.0.1  localhost  $OS_Hostname" /etc/hosts
 
 else
     sudo yum install -y unzip
